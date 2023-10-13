@@ -1,0 +1,50 @@
+.controller{
+    display:flex;
+    flex-direction: column;
+}
+.controllerTitle{
+    font-size: 14px;
+}
+.form{
+    display:flex;
+    gap:30px;
+    flex-direction: column;
+}
+.input{
+    border:none;
+    border-radius: 10px;
+    height:30px;
+    padding:10px;
+    box-sizing: border-box;
+    font-size:15px
+}
+.controllerContainer{
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+    width:fit-content
+}
+.textEditor{
+    border:1px solid gray;
+    border-radius: 10px;
+    height:50px;
+    max-width:600px;
+    background-color: #fff;
+    color:black;
+    font-size:15px;
+    height: fit-content;
+}
+.button{
+    width:200px;
+    display: inline-block;
+}
+.arrowLeft{
+    width:20px;
+    height:20px;
+    transform: rotate(180deg);
+    fill:#fff
+}
+.checkbox{
+    width:20px;
+    height:20px;
+}

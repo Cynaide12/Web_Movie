@@ -1,0 +1,12 @@
+.user__userContainer{
+    display:flex;
+    align-items: center;
+    min-width:175px;
+    width:fit-content;
+    justify-content: space-between;
+}
+.userContainer__img{
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+}

@@ -1,0 +1,40 @@
+.sectionAdmin {
+  padding: 55px 20px;
+  max-width: 1920px;
+  position: relative;
+}
+
+main {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+@media screen and (max-wdth: 1160px) {
+  .sectionAdmin {
+    padding: 55px 10px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  main {
+    grid-column-start: 1;
+  }
+  h1 {
+    font-size: 36px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .sectionAdmin {
+    padding-top: 80px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .sectionAdmin {
+    padding: 55px 10px;
+    padding-top: 80px;
+  }
+}
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 28px;
+  }
+}/*# sourceMappingURL=AdminPanel.css.map */

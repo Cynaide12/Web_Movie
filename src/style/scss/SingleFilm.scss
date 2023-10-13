@@ -1,0 +1,110 @@
+.singleFilm__content{
+    padding-top:100px;
+    position: relative;
+}
+.singleFilm__headerContainer{
+    display:flex;
+    gap:40px
+}
+.headerContainer__thumbnailContainer{
+    min-width:302px;
+    width:302px;
+    height:430px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.headerContainer__thumbnail{
+    width:100%;
+    height:100%
+}
+.headerContainer__filmDescription{
+    position: relative;
+}
+.headerContainer__title{
+    font-size:36px;
+    line-height: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    gap:15px
+}
+.headerContainer__serviceContainer{
+    position: relative;
+    display:flex;
+    align-items: center;
+    width:fit-content;
+    gap:20px;
+}
+.headerContainer__play{
+    margin:15px 0
+}
+.headerContainer__favourites{
+    position: relative;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    opacity: 1;
+    pointer-events: all;
+}
+.headerContainer__descriptionList{
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+    padding:0;
+    li{
+        margin:0;
+        span{
+            width:130px;
+            display:inline-block
+        }
+    }
+}
+.singleFilm__filmDescription__container{
+    padding-top:30px
+}
+.filmDescription__description{
+    max-width:1100px;
+    word-wrap: break-word;
+}
+iframe[title="YouTube video player"]{
+    width:700px;
+    height:500px
+}
+@media screen and (max-width:800px) {
+    iframe[title="YouTube video player"]{
+        width:500px;
+        height:400px
+    }
+}
+@media screen and (max-width:700px) {
+    .singleFilm__headerContainer{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:600px) {
+    iframe[title="YouTube video player"]{
+       width:100%;
+       height:250px
+    }
+    .headerContainer__title{
+        font-size:24px;
+    }
+    .headerContainer__serviceContainer{
+        gap:10px
+    }
+}
+@media screen and (max-width:400px) {
+    .singleFilm__headerContainer{
+        align-items: center;
+    }
+}
+@media screen and (max-width:340px) {
+    .singleFilm__headerContainer{
+        padding: 0;
+    }
+    .headerContainer__filmDescription, .singleFilm__filmDescription__container{
+        padding: 0 10px
+    }
+}

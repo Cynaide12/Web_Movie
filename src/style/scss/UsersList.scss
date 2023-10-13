@@ -1,0 +1,66 @@
+.usersList__tableHead{
+    background-color:transparent
+}
+.changeRole__formContainer {
+    width: calc(100% - 274px);
+    height: 100vh;
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index:10000;
+    background-color: rgba(0, 0, 0, 0.226)
+}
+.changeRole__form {
+    padding: 15px;
+    background: rgba(128, 128, 128, 0.575);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 300px;
+    border-radius: 10px;
+    position: relative;
+}
+.changeRole__controllerContainer {
+    width: fit-content;
+    cursor: pointer;
+    label {
+        cursor: pointer;
+    }
+    input[type="checkbox"] {
+        width: fit-content;
+        clip-path: circle(46% at 50% 50%);
+        cursor: pointer;
+    }
+}
+.changeRole__form-open {
+    display: flex;
+}
+.changeRole__form-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+@media screen and (max-width:1200px) {
+    .usersList__button{
+        padding:3px 6px
+    }
+}
+@media screen and (max-width:1000px) {
+    .changeRole__formContainer {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .usersList__table,
+    .usersList__button {
+        font-size: 12px;
+    }
+    .usersList__button {
+        // padding:5px 5px
+        padding: 0;
+    }
+}

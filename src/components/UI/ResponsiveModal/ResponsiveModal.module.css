@@ -1,0 +1,28 @@
+.modalContainer{
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    pointer-events: none;
+    z-index:100000;
+
+}
+.modalWrapper{
+    position: absolute;
+    bottom:20px;
+    width:350px;
+    right:40px;
+    opacity:0;
+    transition: 400ms;
+    padding:15px;
+    /* box-sizing: border-box; */
+    border-radius: 15px;
+    background-color: gray;
+    z-index: 10000;
+    background-color: #6100c2;
+}
+.modalWrapper_open{
+    opacity:1;
+    /* transition: 400ms; */
+}

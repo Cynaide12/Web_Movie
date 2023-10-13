@@ -1,0 +1,14 @@
+.btn {
+    padding: 14px 24px;
+    background-color: #6100c2;
+    border: none;
+    border-radius: 15px;
+    font-family: "Poppins", sans-serif;
+    line-height: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fafafa;
+    box-sizing: border-box;
+    height: 54px;
+    cursor: pointer;
+}

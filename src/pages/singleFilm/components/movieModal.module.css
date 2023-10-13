@@ -1,0 +1,82 @@
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.671);
+  z-index: 12;
+}
+.popupContainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 938px;
+  height: calc(56.25vw - 56.25px);
+  max-width: calc(100vw - 100px);
+  max-height: calc(100vh - 400px);
+}
+.popupContainer__left {
+  width: 100px;
+  background-color: #21201e;
+}
+.close {
+  position: absolute;
+  right: -35px;
+  top: -35px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  z-index: 10;
+}
+.close svg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+  transition: 300ms;
+}
+.close:hover svg {
+  fill: rgb(189, 189, 189);
+}
+.player_wrapper {
+  width: 100%;
+  height: 100%;
+}
+.player_preloader{
+  position: absolute;
+  margin:auto 0;
+}
+.react_player{
+    display:none;
+} 
+.player_confirm{
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap:20px;
+  z-index:2;
+}
+.player_confirm_div{
+  display:flex;
+  gap:20px
+}
+.player_confirm_btn{
+  width:150px
+}
+@media screen and (max-width:600px) {
+  .player_confirm_title{
+  font-size:16px
+  }
+  .player_confirm_btn{
+    width:100px
+  }
+}

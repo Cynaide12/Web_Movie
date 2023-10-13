@@ -1,0 +1,89 @@
+.slide {
+  /* width: fit-content; */
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  z-index:1
+}
+.active {
+  display: block;
+}
+/* Стили для контейнера слайдера */
+.sliderContainer {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  gap: 20px;
+  min-width: fit-content;
+  transition: transform 0.7s;
+}
+
+.sliderWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  transition: transform 0.5s ease;
+  /* max-width: calc(100vw - 220px - 74px) !important; */
+  overflow: hidden;
+  position: relative;
+  /* width:10px; */
+  /* z-index:2; */
+  /* pointer-events: none; */
+}
+.visible{
+  overflow: visible;
+}
+.btn {
+  width: fit-content;
+  position: absolute;
+  width: 45px;
+  z-index: 10;
+  height: 100%;
+  padding: 0;
+  border-radius: 20px;
+  opacity: 0.8;
+  height:80px;
+  top: calc(50% - 40px);
+  background: transparent;
+}
+.btn::before{
+  content: "";
+  position: absolute;
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+  background: hsla(258,4%,55%,.32);
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border: none;
+  border-radius: 8px;
+}
+.btn:hover{
+  opacity:1;
+  transition: opacity 600ms;
+}
+.btn img {
+  width: 80%;
+  height: 100%;
+  object-position: center;
+}
+.leftBtn {
+  left: 0;
+  transform: rotate(180deg);
+}
+.rightBtn {
+  right: 0;
+}
+.btn_disabled{
+  visibility: hidden;
+}
+.link{
+  z-index:-1
+}
+@media screen and (max-width:700px) {
+  .btn{
+    display: none;
+  }
+}

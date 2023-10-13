@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Poppins&display=swap");
+.login {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-image: url("/src/assets/img/login/logo192.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fafafa;
+}
+
+.login-form {
+  width: fit-content;
+  text-align: center;
+}
+
+.login-form__title {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.login-form__button {
+  background: #6100c2;
+  border-radius: 14px;
+  border: none;
+  width: 225px;
+  padding: 17px 24px;
+  gap: 12px;
+  font-family: "Poppins", sans-serif;
+  line-height: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.login-form__button a {
+  color: white;
+  text-decoration: none;
+}
+
+.login-form__description {
+  font-family: "Poppins", sans-serif;
+  line-height: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.login-form__description a {
+  text-decoration: underline;
+  font-weight: 700;
+  color: #fafafa;
+  cursor: pointer;
+}/*# sourceMappingURL=login.css.map */

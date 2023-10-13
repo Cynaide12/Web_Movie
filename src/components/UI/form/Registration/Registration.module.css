@@ -1,0 +1,75 @@
+.reg__container{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-width:100vw;
+    min-height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index:10;
+}
+.reg__formWrapper{
+    display:flex;
+    flex-direction: column;
+    background: #91909073;
+    padding: 50px 40px;
+    border-radius:10px;
+    position: relative;
+    
+}
+.reg__form{
+    display:flex;
+    flex-direction: column;
+    gap:30px;
+    margin-top:30px
+}
+.reg__input{
+    padding:20px;
+    width:300px;
+    height:30px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: none;
+    &:focus{
+        outline: none;
+    }
+}
+.reg__close{
+    position: absolute;
+    right:20px;
+    top:20px;
+    width:25px;
+    height:25px;
+    cursor: pointer;
+}
+.logoCenter{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.reg__submit{
+    width:100%
+}
+.form__warningMessage{
+    margin:0;
+    position: absolute;
+    top:-25px;
+    color:red;
+    font-size:14px;
+}
+label{
+    position: relative;
+}
+.form__sendResult{
+    margin:0;
+    font-size:14px;
+    text-align: center;
+}
+.form__sendResult.warning{
+    color:red
+}
+.form__sendResult.request{
+    color:rgb(13, 202, 13)
+}

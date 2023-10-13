@@ -3,7 +3,7 @@ import cs from "./movieModal.module.css"
 import ReactPlayer from "react-player";
 import Preloader from "../../../components/UI/preloader/Preloader";
 import Button from "../../../components/Button/Widget/Button";
-const MovieModal = ({ type, video, setModal, setEnded, progressMoving }) => {
+const MovieModal = ({ type, video, setModal, setEnded, progressMoving, setIsYtb }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isConfirm, setIsConfirm] = useState(undefined)
     const hours = Math.floor(progressMoving / 60 / 60);
@@ -19,17 +19,23 @@ const MovieModal = ({ type, video, setModal, setEnded, progressMoving }) => {
         }
     }
     useEffect(() => {
-        if (isLoading && isConfirm) {
+        if (isLoading && isConfirm && type !== 'yt') {
             videoRef.current.seekTo(progressMoving, 'seconds');
         }
-        if (progressMoving < 240) {
+        if (progressMoving < 240 && type !== 'yt') {
             setIsConfirm(false)
         }
     }, [isLoading, progressMoving, isConfirm]);
-
+    useEffect(() => {
+        if (type == 'yt') {
+            setIsYtb(true)
+        } else {
+            setIsYtb(false)
+        }
+    }, [])
     return (
         <div className={cs.popup} onClick={() => setModal(false)}>
-            <div className={cs.popupContainer} >
+            <div className={cs.popupContainer} style={type === 'yt' ? { height: 'calc(56.25vw - 56.25px)' } : null}>
                 {!isLoading && <Preloader className={cs.player_preloader} />}
                 <div className={cs.close}>
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">

@@ -16,6 +16,7 @@ const SingleFilm = () => {
     const { response, setResponse } = useResponseContext()
     const [type, setType] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isYtb, setIsYtb] = useState(false)
     const [video, setVideo] = useState('')
     const [ended, setEnded] = useState(localStorage.getItem(`progress - ${id}`))
     const [progressMoving, setProgressMoving] = useState(localStorage.getItem(`progress - ${id}`))
@@ -44,22 +45,22 @@ const SingleFilm = () => {
         getFilm()
     }, [])
     useEffect(() => {
-        if (!isModalOpen) {
+        if (!isModalOpen && !isYtb) {
             if (ended > 0) {
                 localStorage.setItem(`progress - ${id}`, ended)
             }
         }
     }, [isModalOpen])
     useEffect(() => {
-        if (!isModalOpen) {
+        if (!isModalOpen && !isYtb) {
             setProgressMoving(localStorage.getItem(`progress - ${id}`))
         }
-    }
-        , [ended, isModalOpen])
+    }, 
+    [ended, isModalOpen])
     return (
         <>
             {isModalOpen && data &&
-                <MovieModal video={video} type={type} setModal={() => setIsModalOpen()} setEnded={setEnded} progressMoving={progressMoving} />
+                <MovieModal video={video} type={type} setModal={() => setIsModalOpen()} setEnded={setEnded} progressMoving={progressMoving} setIsYtb={setIsYtb} />
             }
             <div className="content singleFilm__content">
                 {!data ? <Preloader /> : <><div className="container singleFilm__headerContainer">

@@ -18,6 +18,7 @@ const AddFilm = () => {
     const [film, setFilm] = useState('')
     const [actors, setActors] = useState('')
     const [today, setToday] = useState(new Date().toJSON().slice(0, 10))
+    const [uploadProgress, setUploadProgress] = useState(0);
     const { response, setResponse } = useResponseContext()
     const navigate = useNavigate()
     const token = localStorage.getItem("accessToken")
@@ -40,12 +41,18 @@ const AddFilm = () => {
                     'Content-Type': 'multipart/form-data',
                     "Authorization": "Bearer " + token
                 },
+                onUploadProgress: (progressEvent) => {
+                    const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+                    setUploadProgress(progress);
+                },
             });
             setResponse(res.data.message)
-            if(res.data.message == 'Фильм добавлен'){
-            setTimeout(() => {
-                navigate("/admin-panel/films")
-            }, 500)}
+            setUploadProgress(0);
+            if (res.data.message == 'Фильм добавлен') {
+                setTimeout(() => {
+                    navigate("/admin-panel/films")
+                }, 500)
+            }
         } catch (e) {
             e.response.data.error ? setResponse(e.response.data.error) : setResponse(e.response.data.message)
         }
@@ -85,11 +92,14 @@ const AddFilm = () => {
                             <input type="text" className={cs.input} onChange={(e) => changeState(e.target.value, setActors)} />
                         </div>
                         <div className={cs.controller}>
-                                <span className={cs.controllerTitle}>Фильм</span>
-                                <input type="file" name="filmSrc" accept=".mp4, .mov, .wvw, .avi, .svg" onChange={(e) => (changeState(e.target.files, setFilm))} />
-                            </div>
+                            <span className={cs.controllerTitle}>Фильм</span>
+                            <input type="file" name="filmSrc" accept=".mp4, .mov, .wvw, .avi, .svg" onChange={(e) => (changeState(e.target.files, setFilm))} />
+                            {uploadProgress > 0 && uploadProgress < 100 && (
+                                <progress value={uploadProgress} max="100">{uploadProgress}%</progress>
+                            )}
+                        </div>
                         <div className={cs.controller}>
-                            <span className={cs.controllerTitle}>Трейлер. Код встраивания видео с ютуба</span>
+                            <span className={cs.controllerTitle}>Трейлер. Ссылка на видео с ютуба</span>
                             <input type="text" className={cs.input} onChange={(e) => changeState(e.target.value, setTrailerSrc)} />
                         </div>
                         <div className={cs.controller}>
@@ -111,7 +121,7 @@ const AddFilm = () => {
                         <span className={cs.controllerTitle}>Описание</span>
                         <textarea className={cs.textEditor} style={{ height: textareaHeight }} onChange={(e) => { changeState(e.target.value, setDescription); adjustTextareaHeight(e.target); }} />
                     </div>
-                    <Button type="submit" css={cs.button} text="Сохранить" onClick={(e) => addFilm(e)} />
+                    <Button type="submit" css={cs.button} text="Сохранить" dis={uploadProgress > 0 && uploadProgress < 100} onClick={(e) => addFilm(e)} />
                 </form>
             </div>
         </section>

@@ -16,7 +16,6 @@
   justify-content: center;
   align-items: center;
   width: 938px;
-  height: calc(56.25vw - 56.25px);
   max-width: calc(100vw - 100px);
   max-height: calc(100vh - 400px);
 }
@@ -72,11 +71,38 @@
 .player_confirm_btn{
   width:150px
 }
+.player_confirm_title{
+  text-align: center;
+}
 @media screen and (max-width:600px) {
   .player_confirm_title{
   font-size:16px
   }
   .player_confirm_btn{
     width:100px
+  }
+}
+@media screen and (max-width:500px) {
+  .player_confirm{
+    gap:0px
+  }
+  .player_confirm_title{
+    font-size:14px
+    }
+  .player_confirm_title{
+    margin:0;
+  }
+  .player_confirm_btn{
+    width:60px;
+    padding:0
+  }
+  .close{
+    right:0px;
+    width:25px;
+    height:25px;
+  }
+  .popupContainer{
+    max-width:none;
+    max-height:300px
   }
 }

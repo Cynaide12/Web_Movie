@@ -50,6 +50,7 @@ const FilmsList = () => {
             })
             setUpdateList(true)
             setResponse(res.data.message)
+            localStorage.removeItem(`progress - ${id}`)
         } catch (e) {
             setResponse(e.response.data.message)
         }

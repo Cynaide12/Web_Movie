@@ -22,6 +22,7 @@ const ChangeFilm = () => {
     const [trailerSrc, setTrailerSrc] = useState('')
     const [film, setFilm] = useState('')
     const [actors, setActors] = useState('')
+    const [uploadProgress, setUploadProgress] = useState(0);
     const checkboxChecked = useRef()
     const textarea = useRef()
     const token = localStorage.getItem("accessToken")
@@ -91,9 +92,13 @@ const ChangeFilm = () => {
                             <div className={cs.controller}>
                                 <span className={cs.controllerTitle}>Фильм</span>
                                 <input type="file" name="filmSrc" accept=".mp4, .mov, .wvw, .avi, .flv" onChange={(e) => (changeState(e.target.files, setFilm))} />
+                                {uploadProgress > 0 && uploadProgress < 100 && (
+                                    <progress value={uploadProgress} max="100">{uploadProgress}%</progress>
+                                )}
                             </div>
+
                             <div className={cs.controller}>
-                                <span className={cs.controllerTitle}>Трейлер. Код встраивания видео с ютуба</span>
+                                <span className={cs.controllerTitle}>Трейлер. Ссылка на видео с ютуба</span>
                                 <input type="text" className={cs.input} defaultValue={trailerSrc} onChange={(e) => changeState(e.target.value, setTrailerSrc)} />
                             </div>
                             <div className={cs.controller}>
@@ -118,7 +123,7 @@ const ChangeFilm = () => {
                             <span className={cs.controllerTitle}>Описание</span>
                             <textarea className={cs.textEditor} defaultValue={description} style={{ height: textareaHeight }} ref={textarea} onChange={(e) => { changeState(e.target.value, setDescription); adjustTextareaHeight(e.target); }} />
                         </div>
-                        <SaveFilm id={id} title={title} description={description} thumbnail={thumbnail[0]} date={date} category={category} sliderThumbnail={sliderThumbnail[0]} mainSlider={mainSlider} token={token} className={cs.button} setMainSlider={() => setMainSlider()} trailerSrc={trailerSrc} actors={actors} filmSrc={film[0]} />
+                        <SaveFilm id={id} title={title} description={description} thumbnail={thumbnail[0]} date={date} category={category} sliderThumbnail={sliderThumbnail[0]} mainSlider={mainSlider} token={token} className={cs.button} setMainSlider={() => setMainSlider()} trailerSrc={trailerSrc} actors={actors} filmSrc={film[0]} setUploadProgress = {setUploadProgress} uploadProgress={uploadProgress} />
                     </form>
                 }
             </div>

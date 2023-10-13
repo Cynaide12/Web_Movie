@@ -19,6 +19,7 @@ const DelBtn = ({id, token, className}) => {
             setTimeout(() => {
                 navigate("/admin-panel/films")
             }, 500)
+            localStorage.removeItem(`progress - ${id}`)
         } catch (e) {
             setResponse(e.response.data.message)
         }

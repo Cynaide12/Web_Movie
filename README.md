@@ -1,5 +1,7 @@
-# react-with-webpack-template
-Template for react with webpack config and backend server for bundle.
+<h2>Getting started </h2>
+```python
+print("hello")
+```
 <h2>Стек технологий</h2>
 <ul>
   <li>

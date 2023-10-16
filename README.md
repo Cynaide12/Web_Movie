@@ -4,7 +4,7 @@ npm start
 or
 <br/>
 npm run dev
-<h2>Стек технологий</h2>
+<h2>Technology stack</h2>
 <ul>
   <li>
     React + React hooks, React player

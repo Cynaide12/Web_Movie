@@ -22,6 +22,7 @@ const ChangeFilm = () => {
     const [trailerSrc, setTrailerSrc] = useState('')
     const [film, setFilm] = useState('')
     const [actors, setActors] = useState('')
+    const [country, setCountry] = useState('')
     const [uploadProgress, setUploadProgress] = useState(0);
     const checkboxChecked = useRef()
     const textarea = useRef()
@@ -36,15 +37,14 @@ const ChangeFilm = () => {
                 setDescription(res.data.description)
                 setDate(res.data.date)
                 setThumbnail(res.data.thumbnail.split('src')[1])
-                console.log(res.data.thumbnail.split('src')[1])
                 setSeeThumbnail(res.data.thumbnail.split('src')[1])
                 setSliderThumbnail(res.data.sliderThumbnail)
                 setMainSlider(res.data.isSlider)
                 setTrailerSrc(res.data.trailer)
                 setFilm(res.data.filmSrc)
                 setActors(res.data.actors)
+                setCountry(res.data.country)
             }
-            console.log(res.data)
         } catch (e) {
             setResponse(e.response.data.message)
         }
@@ -76,6 +76,10 @@ const ChangeFilm = () => {
                             <div className={cs.controller}>
                                 <span className={cs.controllerTitle}>Название фильма</span>
                                 <input type="text" className={cs.input} defaultValue={title} onChange={(e) => changeState(e.target.value, setTitle)} />
+                            </div>
+                            <div className={cs.controller}>
+                                <span className={cs.controllerTitle}>Страна</span>
+                                <input type="text" className={cs.input} defaultValue={country} onChange={(e) => changeState(e.target.value, setCountry)} />
                             </div>
                             <div className={cs.controller}>
                                 <span className={cs.controllerTitle}>Категория</span>
@@ -123,7 +127,7 @@ const ChangeFilm = () => {
                             <span className={cs.controllerTitle}>Описание</span>
                             <textarea className={cs.textEditor} defaultValue={description} style={{ height: textareaHeight }} ref={textarea} onChange={(e) => { changeState(e.target.value, setDescription); adjustTextareaHeight(e.target); }} />
                         </div>
-                        <SaveFilm id={id} title={title} description={description} thumbnail={thumbnail[0]} date={date} category={category} sliderThumbnail={sliderThumbnail[0]} mainSlider={mainSlider} token={token} className={cs.button} setMainSlider={() => setMainSlider()} trailerSrc={trailerSrc} actors={actors} filmSrc={film[0]} setUploadProgress = {setUploadProgress} uploadProgress={uploadProgress} />
+                        <SaveFilm id={id} title={title} description={description} thumbnail={thumbnail[0]} date={date} category={category} sliderThumbnail={sliderThumbnail[0]} mainSlider={mainSlider} token={token} className={cs.button} setMainSlider={() => setMainSlider()} trailerSrc={trailerSrc} actors={actors} filmSrc={film[0]} setUploadProgress={setUploadProgress} uploadProgress={uploadProgress} country={country} />
                     </form>
                 }
             </div>

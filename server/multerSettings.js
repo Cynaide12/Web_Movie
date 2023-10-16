@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
       else{
       return false;}
     });
-    const allowedExtensions = ['jpg', 'png', 'svg', 'webp', 'jpeg', 'mp4', 'mov', 'www', 'avi', 'flv'];
+    const allowedExtensions = ['jpg', 'png', 'svg', 'webp', 'jpeg', 'mp4', 'mov', 'www', 'avi', 'flv', 'AVI'];
     const ext = getExtension(originalname);
     if(allowedExtensions.includes(ext)){
     if (existingFile) {

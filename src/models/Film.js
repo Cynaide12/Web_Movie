@@ -4,6 +4,7 @@ const Film = new Schema({
     description: {type: String, unique: false, required: true},
     date: {type: String, unique: false, required: true},
     category: {type: Array, required: true},
+    country: {type: String, required: true},
     filmSrc: {type: String, required: false},
     thumbnail: {type: String, required: true},
     isSlider: {type: Boolean, required: true},

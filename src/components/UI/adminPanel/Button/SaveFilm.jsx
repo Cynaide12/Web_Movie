@@ -4,7 +4,7 @@ import { useResponseContext } from "../../../../context/responseContext";
 import axios from "axios";
 const SaveFilm = (props) => {
     const { response, setResponse } = useResponseContext()
-    const { setUploadProgress, setMainSlider} = props
+    const { setUploadProgress, setMainSlider } = props
     const saveFilm = async (e) => {
         e.preventDefault();
         try {
@@ -18,6 +18,7 @@ const SaveFilm = (props) => {
             formData.append('trailer', props.trailerSrc)
             formData.append('filmSrc', props.filmSrc)
             formData.append('actors', props.actors)
+            formData.append('country', props.country)
             if (props.sliderThumbnail !== undefined || props.sliderThumbnail !== '/') {
                 formData.append('sliderThumbnail', props.sliderThumbnail)
             }

@@ -29,12 +29,12 @@ const Slider = ({ type, children }) => {
     }
     const handleMouseDown = (event) => {
         setIsDragging(true);
-        setStartX(event.clientX);
+        setStartX(event.clientX || event.targetTouches[0].clientX);
 
     };
     const handleMouseMove = (event) => {
         if (!isDragging || slideChangedDuringMove) return;
-        const currentX = event.clientX;
+        const currentX = event.clientX || event.targetTouches[0].clientX;
         setDeltaX(currentX - startX);
     };
     const handleMouseUp = (id) => {
@@ -156,6 +156,9 @@ const Slider = ({ type, children }) => {
                                     onMouseDown={handleMouseDown}
                                     onMouseMove={handleMouseMove}
                                     onMouseLeave={handleMouseUp}
+                                    onTouchStart={handleMouseDown} 
+                                    onTouchMove={handleMouseMove} 
+                                    onTouchEnd={() => handleMouseUp(child.props.id)}
                                 >
                                     {child}
                                 </div>
@@ -168,7 +171,6 @@ const Slider = ({ type, children }) => {
                 </div>
             ) : (
                 <>
-                    {/* {console.log(showSlide)} */}
                     <div className={style.sliderContainer} style={sliderStyles} ref={wrapperRef}>
                         {React.Children.map(children, (child, index) => (
                             <div className={style.slide} ref={sliderRef} onClick={() => handleLinkClick(child.props.id)}>

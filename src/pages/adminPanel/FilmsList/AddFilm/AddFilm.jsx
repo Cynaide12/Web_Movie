@@ -17,6 +17,7 @@ const AddFilm = () => {
     const [trailerSrc, setTrailerSrc] = useState('')
     const [film, setFilm] = useState('')
     const [actors, setActors] = useState('')
+    const [country, setCountry] = useState('')
     const [today, setToday] = useState(new Date().toJSON().slice(0, 10))
     const [uploadProgress, setUploadProgress] = useState(0);
     const { response, setResponse } = useResponseContext()
@@ -36,6 +37,7 @@ const AddFilm = () => {
             formData.append('trailer', trailerSrc)
             formData.append('filmSrc', film[0])
             formData.append('actors', actors)
+            formData.append('country', country)
             const res = await axios.post("/movie/add-film", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -78,6 +80,10 @@ const AddFilm = () => {
                         <div className={cs.controller}>
                             <span className={cs.controllerTitle}>Название фильма</span>
                             <input type="text" className={cs.input} onChange={(e) => changeState(e.target.value, setTitle)} />
+                        </div>
+                        <div className={cs.controller}>
+                            <span className={cs.controllerTitle}>Страна</span>
+                            <input type="text" className={cs.input} onChange={(e) => changeState(e.target.value, setCountry)} />
                         </div>
                         <div className={cs.controller}>
                             <span className={cs.controllerTitle}>Категория</span>

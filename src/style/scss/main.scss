@@ -182,6 +182,11 @@ body {
         height:48px
     }
 }
+@media screen and (max-height:350px) {
+    .responsiveMenu-open {
+        overflow-y: scroll;
+    }
+}
 .menu_header-nav {
     display: flex;
     width: fit-content;

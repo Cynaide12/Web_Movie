@@ -12,7 +12,7 @@ const Trending = ({ src, title, description, date, id }) => {
                     <h3 className="card_text-title">{title}</h3>
                     <div className="card_text-bottomContainer">
                         <span className="card_text-description">
-                            {description}
+                            {description.join(", ")}
                         </span>
                         <span>{date}</span>
                     </div>

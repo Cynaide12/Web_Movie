@@ -3,9 +3,11 @@ import cs from "./movieModal.module.css"
 import ReactPlayer from "react-player";
 import Preloader from "../../../components/UI/preloader/Preloader";
 import Button from "../../../components/Button/Widget/Button";
-const MovieModal = ({ type, video, setModal, setEnded, progressMoving, setIsYtb }) => {
+const MovieModal = ({ type, video, setModal, setEnded, progressMoving, setIsYtb, id }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isConfirm, setIsConfirm] = useState(undefined)
+    const [duration, setDuration] = useState(undefined)
+    console.log(video)
     const hours = Math.floor(progressMoving / 60 / 60);
 
     const minutes = Math.floor(progressMoving / 60) - (hours * 60);
@@ -13,6 +15,12 @@ const MovieModal = ({ type, video, setModal, setEnded, progressMoving, setIsYtb 
     const correctedSrc = video.replace(/\\/g, '/');
     const seconds = Math.floor(progressMoving % 60);
     const videoRef = useRef()
+    const handleIsConfirm = (boolean) => {
+        setIsConfirm(boolean)
+        if(!boolean){
+            localStorage.removeItem(`progress - ${id}`)
+        }
+    }
     const stylePlayer = () => {
         if (isLoading) {
             return 'block'
@@ -22,7 +30,7 @@ const MovieModal = ({ type, video, setModal, setEnded, progressMoving, setIsYtb 
         if (isLoading && isConfirm && type !== 'yt') {
             videoRef.current.seekTo(progressMoving, 'seconds');
         }
-        if (progressMoving < 240 && type !== 'yt') {
+        if ((progressMoving < 240 || ((duration - progressMoving) >= 100)) && type !== 'yt') {
             setIsConfirm(false)
         }
     }, [isLoading, progressMoving, isConfirm]);
@@ -43,16 +51,16 @@ const MovieModal = ({ type, video, setModal, setEnded, progressMoving, setIsYtb 
                     </svg>
                 </div>
                 <div onClick={(e) => e.stopPropagation()} className={cs.player_wrapper}>
-                    {progressMoving > 240 && !isConfirm && type !== 'yt' && isLoading &&
+                    {(progressMoving > 240 && ((duration - progressMoving) >= 100)) && isConfirm == undefined && type !== 'yt' && isLoading &&
                         <div className={cs.player_confirm}>
                             <h2 className={["page-title", cs.player_confirm_title].join(' ')}>В прошлый раз вы прекратили просмотр на  {hours + ':' + minutes + ':' + seconds}. Продолжить с этого момента?</h2>
                             <div className={cs.player_confirm_div}>
-                                <Button text="Да" css={cs.player_confirm_btn} onClick={() => setIsConfirm(true)} />
-                                <Button text="Нет" css={cs.player_confirm_btn} onClick={() => setIsConfirm(false)} />
+                                <Button text="Да" css={cs.player_confirm_btn} onClick={() => handleIsConfirm(true)} />
+                                <Button text="Нет" css={cs.player_confirm_btn} onClick={() => handleIsConfirm(false)} />
                             </div>
                         </div>
                     }
-                    <ReactPlayer ref={videoRef} url={correctedSrc} controls={true} playing={isConfirm !== undefined ? true : true} width="100%" height="100%" style={{ display: stylePlayer() }} className={cs.react_player} onReady={() => { setIsLoading(true) }} onProgress={(prog) => { setEnded(prog.playedSeconds) }} />
+                    <ReactPlayer ref={videoRef} url={correctedSrc} controls={true} playing={isConfirm !== undefined ? true : false} width="100%" height="100%" style={{ display: stylePlayer() }} className={cs.react_player} onReady={(red) => { setIsLoading(true); setDuration(red.player.player.player.duration) }}  onProgress={(prog) => { setEnded(prog.playedSeconds) }} />
                 </div>
             </div>
         </div>

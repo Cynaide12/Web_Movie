@@ -49,12 +49,12 @@ const MainSlider = ({ children, isPreloader }) => {
     }
     const handleMouseDown = (event) => {
         setIsDragging(true);
-        setStartX(event.clientX);
+        setStartX(event.clientX || event.targetTouches[0].clientX);
 
     };
     const handleMouseMove = (event) => {
         if (!isDragging || slideChangedDuringMove) return;
-        const currentX = event.clientX;
+        const currentX = event.clientX || event.targetTouches[0].clientX;
         setDeltaX(currentX - startX);
     };
     const handleMouseUp = (id) => {
@@ -162,6 +162,9 @@ const MainSlider = ({ children, isPreloader }) => {
                                             onMouseDown={handleMouseDown}
                                             onMouseMove={handleMouseMove}
                                             onMouseLeave={handleMouseUp}
+                                            onTouchStart={handleMouseDown} 
+                                            onTouchMove={handleMouseMove} 
+                                            onTouchEnd={() => handleMouseUp(slide.props.id)}
                                             key={slide.props.id}
                                         >
                                             <CenterCard src={slide.props.src} title={slide.props.title} date={slide.props.date} category={slide.props.category} id={slide.props._id} />

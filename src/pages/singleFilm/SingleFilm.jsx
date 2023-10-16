@@ -60,7 +60,7 @@ const SingleFilm = () => {
     return (
         <>
             {isModalOpen && data &&
-                <MovieModal video={video} type={type} setModal={() => setIsModalOpen()} setEnded={setEnded} progressMoving={progressMoving} setIsYtb={setIsYtb} />
+                <MovieModal video={video} type={type} setModal={() => setIsModalOpen()} setEnded={setEnded} progressMoving={progressMoving} setIsYtb={setIsYtb} id={id} />
             }
             <div className="content singleFilm__content">
                 {!data ? <Preloader /> : <><div className="container singleFilm__headerContainer">
@@ -79,7 +79,7 @@ const SingleFilm = () => {
                             <ItemList text='Дата выхода' attribute={data.date} />
                             <ItemList text='Страна' attribute={data.country} />
                             <ItemList text='Актеры' attribute={data.actors} />
-                            <ItemList text='Жанр' attribute={data.category} />
+                            <ItemList text='Жанр' attribute={data.category.join(', ')} />
                         </ul>
                     </div>
                 </div>

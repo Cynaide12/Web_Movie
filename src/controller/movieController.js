@@ -3,7 +3,7 @@ const User = require("../models/User");
 class movieController {
   async addFilm(req, res) {
     try {
-      const { title, description, date, category, actors, trailer, isSlider } =
+      const { title, description, date, category, actors, trailer, isSlider, country } =
         req.body;
       let thumbnail = "";
       let currentCategory = category.split(" ");
@@ -20,7 +20,7 @@ class movieController {
       if (req.files["filmSrc"]) {
         filmSrc = req.files["filmSrc"][0];
       }
-      if (!title || !description || !date || !category) {
+      if (!title || !description || !date || !category || !country) {
         return res.json({ message: "Заполните все поля" });
       }
       if (
@@ -48,6 +48,7 @@ class movieController {
         sliderThumbnail: sliderThumbnail.path,
         actors,
         trailer,
+        country
       });
       await film.save();
       return res.json({ message: "Фильм добавлен", film });
@@ -146,6 +147,7 @@ class movieController {
         actors,
         trailer,
         isSlider,
+        country
       } = req.body;
       let thumbnail = "";
       let currentCategory = category.split(" ");
@@ -170,6 +172,9 @@ class movieController {
       }
       if (!title) {
         return res.json({ message: "Название фильма не может быть пустым" });
+      }
+      if(!country){
+        return res.json({ message: "Укажите страну" });
       }
       if (!category) {
         return res.json({
@@ -203,6 +208,7 @@ class movieController {
       film.date = date;
       film.actors = actors;
       film.trailer = trailer;
+      film.country = country;
       if (filmSrc) {
         film.filmSrc = filmSrc.path;
       }

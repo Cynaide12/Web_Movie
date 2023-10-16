@@ -26,3 +26,12 @@
     opacity:1;
     /* transition: 400ms; */
 }
+@media screen and (max-width:600px) {
+    .modalWrapper{
+        width:auto;
+        bottom:100px;
+    }
+    .modalWrapper p{
+        margin:0;
+    }
+}

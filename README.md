@@ -1,7 +1,7 @@
 <h2>Getting started </h2>
-```python
-print("hello")
-```
+npm start
+or
+npm run dev
 <h2>Стек технологий</h2>
 <ul>
   <li>

@@ -25,3 +25,6 @@ npm run dev
     MongoDB
   </li>
 </ul>
+<h2>Admin-panel</h2>
+<p>to access the admin panel, specify in the URL - <b>/admin-panel</b></p>
+log in using the login <b>test</b> and password <b>test</b>

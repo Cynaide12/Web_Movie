@@ -1,6 +1,8 @@
 <h2>Getting started </h2>
 npm start
+<br/>
 or
+<br/>
 npm run dev
 <h2>Стек технологий</h2>
 <ul>

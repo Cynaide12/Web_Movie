@@ -51,7 +51,7 @@ var port = process.env.PORT || 3000;
 const start = async () => {
   try {
     await mongoose.connect(
-      `mongodb+srv://arturlatupov:Andromeda154.@cluster0.9guqcfk.mongodb.net/?retryWrites=true&w=majority`
+      `confidentially`
     );
     app.listen(port, () =>
       console.log(
